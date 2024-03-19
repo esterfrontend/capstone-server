@@ -66,6 +66,7 @@ const caseSchema = new Schema(
         },
         comments: [
             {
+                _id: false,
                 comment: {
                     type: String,
                     minLength: 3,

@@ -1,8 +1,6 @@
-const { Router } = require('express')
+const router = require("express").Router()
 
 const { getAllProfessionals, getOneProfessional, editProfessional, removeProfessional } = require('../controllers/professional.controller')
-
-const router = Router()
 
 router.get('/', getAllProfessionals)
 router.get('/getOne/:professional_id', getOneProfessional)

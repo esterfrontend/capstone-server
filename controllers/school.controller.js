@@ -3,7 +3,7 @@ const School = require('../models/school.model');
 
 const getAllSchools = async (req, res, next) => {
     try {
-        const schools = await School.find()
+        const schools = await School.find().sort({province: -1}).lean()
         res.status(200).json(schools);
     } catch (err) {
         next(err)

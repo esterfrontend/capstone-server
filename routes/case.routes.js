@@ -1,8 +1,5 @@
-const { Router } = require('express')
-
+const router = require("express").Router()
 const { getOneCase, createOneCase, editCase, changeCaseStatus } = require('../controllers/case.controller')
-
-const router = Router()
 
 router.get('/getOne/:case_id', getOneCase)
 router.post('/create', createOneCase);

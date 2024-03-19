@@ -3,7 +3,7 @@ const Professional = require('../models/professional.model');
 
 const getAllProfessionals = async (req, res, next) => {
     try {
-        const professionals = await Professional.find()        
+        const professionals = await Professional.find().sort({province: -1}).lean()
         res.status(200).json(professionals);
     } catch (err) {
         next(err)
