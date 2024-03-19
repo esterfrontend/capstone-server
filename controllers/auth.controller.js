@@ -9,7 +9,7 @@ const signup = async (req, res, next) => {
             res.status(400).json({ error: true, contenido: 'Ese email ya está registrado' });
         }
         const passwordCrypt = createPass(req.body.password);
-        const result = await User.create({
+        const createdUser = await User.create({
             email: req.body.email,
             password: passwordCrypt,
             role: req.body.role,
@@ -22,7 +22,7 @@ const signup = async (req, res, next) => {
             phone: req.body.phone,
             phoneSecondary: req.body.phoneSecondary
         });
-        res.json({ message: 'Usuario creado', contendio: result });
+        res.json({ message: 'Usuario creado', contendio: createdUser });
     } catch (error) {
         next(error)
     }

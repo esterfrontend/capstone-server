@@ -4,6 +4,6 @@ const { getOneCase, createOneCase, editCase, changeCaseStatus } = require('../co
 router.get('/getOne/:case_id', getOneCase)
 router.post('/create', createOneCase);
 router.put('/edit/:case_id', editCase)
-router.delete('/changeCaseStatus/:case_id', changeCaseStatus)
+router.put('/changeCaseStatus/:case_id', changeCaseStatus)
 
 module.exports = router;

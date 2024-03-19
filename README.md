@@ -26,36 +26,38 @@ npm run dev
 ```
 
 
-
-# Application Routes:
-
-|          URL path          |        Description        | Back state | Front state |  Protected  |
-| :------------------------: | :-----------------------: | :--------: | :---------: | :---------: |
-|  /                         |  Home                     |     ❌     |     ❌      |     ✅      |
-|  /nuevo-caso               |  Create new case          |     ❌     |     ❌      |     ✅      |
-|  /colegios                 |  Affiliated schools       |     ❌     |     ❌      |     ✅      |
-|  /colegios/:id             |  One school               |     ❌     |     ❌      |     ✅      |
-|  /profesionales            |  Professionals            |     ❌     |     ❌      |     ✅      |
-|  /profesionales/:id        |  One professional         |     ❌     |     ❌      |     ✅      |
-|  /inicio-sesion            |  Login                    |     ❌     |     ❌      |     ❌      |
-|  /registro                 |  Signup                   |     ❌     |     ❌      |     ❌      |
-|  /mi-perfil                |  Profile                  |     ❌     |     ❌      |     ❌      |
-|  /mis-casos                |  Cases                    |     ❌     |     ❌      |     ❌      |
-|  /mis-casos/:id            |  One case                 |     ❌     |     ❌      |     ❌      |
-|  /como-funciona            |  How it works (optional)  |     ❌     |     ❌      |     ✅      |
-
-
 # API Routes
+
 
 ### Cases
 | URL path                   | HTTP Method     | Response              | Action                  |
 | :------------------------: | :-------------: | :-------------------: | :---------------------: | 
-| /api/cases/list            | GET             | [cases]               |  Get cases related to one school or professional  |
-| /api/cases/getOne/:id      | GET             | {case}                |  Get one case           |
+| /api/cases/getOne/:case_id | GET             | {case}                |  Get one user case      |
 | /api/cases/create          | POST            | {createdCase}         |  Create a new case      |
+| /api/cases/edit/:case_id   | PUT             | {editedCase}          |  Edit a case            |
+| /api/cases/changeCaseStatus/:case_id | PUT   | {editedCase}          |  Edit case state        |
   
+
+### Users  
+| URL path                   | HTTP Method     | Response              | Action                  |
+| :------------------------: | :-------------: | :-------------------: | :---------------------: |
+| /api/users                 | GET             | [users]               |  Get all users          |
+| /api/users/getOneUser      | GET             | {user}                |  Get one user           |
+| /api/users/getAllMyCases   | GET             | {cases}               |  Get all user cases     |
+| /api/users/editUser        | PUT             | {user}                |  Edit a user            |
+| /api/users/remove          | DELETE          | {message}             |  Remove a user          |
+
+
+## Auth routes
+| URL path                   | HTTP Method     | Response              | Action                  |
+| :-------------------------:| :-------------: | :--------------------:| :----------------------:|
+| /api/auth/signup           | POST            | {createdUser}         | Create a new user       |
+| /api/auth/login            | POST            | {token}               | Log user in             |
+| /api/auth/verify           | POST            | {loggedUser}          | Get Logged User         |
+
+
   
-### Schools  
+<!-- ### Schools  
 | URL path                   | HTTP Method     | Response              | Action                  |
 | :------------------------: | :-------------: | :-------------------: | :---------------------: | 
 | /api/schools               | GET             | [schools]             |  Get all schools        |
@@ -66,12 +68,4 @@ npm run dev
 | URL path                   | HTTP Method     | Response              | Action                  |
 | :------------------------: | :-------------: | :-------------------: | :---------------------: |
 | /api/professionals         | GET             | [professionals]       |  Get all professionals  |
-| /api/professionals/getOne/:id| GET           | {professional}        |  Get one professional   |
-
-
-## Auth routes
-| URL path                   | HTTP Method     | Response              | Action                  |
-| :-------------------------:| :-------------: | :--------------------:| :----------------------:|
-| /api/auth/getLoggedUser    | GET             | {loggedUser}          | Get Logged User         |
-| /api/auth/signup           | POST            | {createdUser}         | Create a new user       |
-| /api/auth/login            | POST            | {authToken}           | Log user in             |
+| /api/professionals/getOne/:id| GET           | {professional}        |  Get one professional   | -->
