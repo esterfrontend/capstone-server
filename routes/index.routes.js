@@ -1,15 +1,15 @@
 const router = require("express").Router()
 
-const caseRoutes = require("./case.routes")
+const casesRoutes = require("./cases.routes")
 const userRoutes = require("./user.routes")
-const schoolRoutes = require("./school.routes")
-const professionalRoutes = require("./professional.routes")
+const schoolsRoutes = require("./schools.routes")
+const professionalsRoutes = require("./professionals.routes")
 const authRoutes = require('./auth.routes');
 
-router.use('/case', caseRoutes)
-router.use('/users', userRoutes)
-router.use('/schools', schoolRoutes)
-router.use('/professionals', professionalRoutes)
+router.use('/cases', casesRoutes)
+router.use('/user', userRoutes)
+router.use('/schools', schoolsRoutes)
+router.use('/professionals', professionalsRoutes)
 router.use('/auth', authRoutes)
 
 module.exports = router

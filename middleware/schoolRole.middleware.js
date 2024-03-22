@@ -1,4 +1,4 @@
-const userRoleMiddleware = (req, res, next) => {
+const schoolRoleMiddleware = (req, res, next) => {
   try {
     if (!req.user) {
       return res.sendStatus(401);
@@ -12,4 +12,4 @@ const userRoleMiddleware = (req, res, next) => {
   }
 }
 
-module.exports = userRoleMiddleware;
+module.exports = schoolRoleMiddleware;

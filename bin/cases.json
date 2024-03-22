@@ -1,0 +1,54 @@
+[
+    {
+        "_id": "65fd4269df529f4fa178b4f7",
+        "informant": {
+            "anonymous": true,
+            "name": "",
+            "relation": "",
+            "contact": ""
+        },
+        "status": "abierto",
+        "school": "65fbfb0eb0d856214efde1ac",
+        "victim": "Explicación de la victima",
+        "place": "Lugar ",
+        "how": "Otro",
+        "attacker": "Otro",
+        "moreInformation": "Otro",
+        "attached": [],
+        "professional": "65fc0046b0d856214efde1b5"
+    },
+    {
+        "informant": {
+            "anonymous": false,
+            "name": "María",
+            "relation": "Su madre",
+            "contact": "97279239"
+        },
+        "status": "abierto",
+        "school": "65fc0046b0d856214efde1b5",
+        "victim": "Suspendisse potenti. Mauris pretium, magna sit amet maximus convallis, libero arcu placerat velit, vel rutrum erat arcu in eros. Mauris rhoncus velit a elit porttitor, quis commodo purus eleifend. Nulla a dui auctor, condimentum sem a, interdum elit. Nulla eget egestas sem. Cras in euismod nunc. Mauris ultricies, lorem a ultricies ultricies, libero urna bibendum leo, quis elementum lacus ipsum sit amet magna. Morbi in est sed sem ornare semper. Sed volutpat tincidunt lectus, eu auctor velit. Vivamus ullamcorper nisl et nisi blandit eleifend.        ",
+        "place": "Sed commodo felis vitae felis pellentesque suscipit.",
+        "how": "Nullam posuere urna vel ornare consectetur. Nullam ultricies aliquet pretium. Mauris at ultrices nulla, vel dignissim mauris. Morbi auctor justo sed vestibulum fermentum. Morbi aliquet et diam blandit sagittis. Quisque hendrerit laoreet metus ut posuere. Integer commodo odio vel sollicitudin ultricies. Ut augue justo, luctus id auctor at, aliquam nec magna. In eu consequat orci, vitae molestie ante. Quisque eget auctor urna, in lobortis ante. Nam neque dolor, vestibulum id imperdiet id, pharetra vitae dolor. Phasellus interdum blandit mauris, vitae mollis nunc semper vel. Cras pulvinar vehicula tincidunt. Vestibulum sit amet augue in odio commodo posuere eu ut arcu.",
+        "attacker": "Suspendisse potenti. Mauris pretium, magna sit amet maximus convallis, libero arcu placerat velit, vel rutrum erat arcu in eros. Mauris rhoncus velit a elit porttitor, quis commodo purus eleifend. Nulla a dui auctor, condimentum sem a, interdum elit. Nulla eget egestas sem",
+        "moreInformation": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Cras rhoncus scelerisque tortor eget pretium. Maecenas eget felis sed velit semper rutrum. Vivamus et finibus ipsum, sit amet porta velit. Quisque dapibus laoreet finibus. In sed lacinia mi. Sed ac massa eget eros semper scelerisque. Vestibulum augue elit, rhoncus imperdiet dolor at, rhoncus rhoncus ipsum. Fusce quis urna et sem tincidunt sagittis.",
+        "attached": [],
+        "professional": "65fc0046b0d856214efde1b5"
+    },
+    {
+        "informant": {
+            "anonymous": true,
+            "name": "",
+            "relation": "",
+            "contact": ""
+        },
+        "status": "abierto",
+        "school": "65fc17c9d23ab496bf064910",
+        "victim": "Explicación de la victima",
+        "place": "Lugar ",
+        "how": "Otro",
+        "attacker": "Otro",
+        "moreInformation": "Otro",
+        "attached": [],
+        "professional": "65fc0046b0d856214efde1b5"
+    }
+]

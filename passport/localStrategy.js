@@ -38,7 +38,7 @@ passport.use(
         if (!user) {
           return done(null, false);
         }
-        
+
         if (!checkPass(password, user.password.hash, user.password.salt)) {
           return done(null, false);
         }

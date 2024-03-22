@@ -1,0 +1,90 @@
+[
+  {
+    "_id": "65fbfb0eb0d856214efde1ac",
+    "email": "colegio1@gmail.com",
+    "password": {
+      "salt": "35b4de7ebccc68b582fa97fe04184cb94b4c2b0c3a0b991fbe299762338fd913",
+      "hash": "323296b6552f3a4fb00870c2c177ddd3626eab1075d8308a970337c9f09d48b20db6d6688a5870873d750f26f24f7da2383a92b174c467c2cbdd2af208a1f590"
+    },
+    "role": "colegio",
+    "name": "Santa Ana",
+    "address": "C/ Colegio, 1",
+    "postalCode": 50004,
+    "province": "Zaragoza",
+    "contactPerson": "Margarita",
+    "phone": 655655655,
+    "phoneSecondary": 643653928,
+    "professionals": "65fc0046b0d856214efde1b5",
+    "cases": "65fd4269df529f4fa178b4f7"
+  },
+  {
+    "_id": "65fbfd50b0d856214efde1b2",
+    "email": "colegio2@gmail.com",
+    "password": {
+      "salt": "6d8da0d932b38552dae26306eb4fdd302c1472a0ca9c81d385b1476409524d7b",
+      "hash": "aac98d43e9e68439b5ac36f438c9e6b3e8df451a32150d48f61aaf69969b4532c11b6aa1a373fcc8117b37789fb814619762e767fbe656eb49b77d527b4d885e"
+    },
+    "role": "colegio",
+    "name": "Escolapios",
+    "address": "C/ Colegio, 2",
+    "postalCode": 50004,
+    "province": "Huesca",
+    "contactPerson": "Juan",
+    "phone": 653655655,
+    "phoneSecondary": 643753928,
+    "professionals": "65fc0046b0d856214efde1b5",
+    "cases": []
+  },
+  {
+    "_id": "65fc0046b0d856214efde1b5",
+    "email": "profesional1@gmail.com",
+    "password": {
+      "salt": "4598cf5374cdc95431719076ff78d12a9876339ed6f0b1a3ff7b55720bc821ad",
+      "hash": "6fc67246242dd50ced807f83bacd6e9af1ef48e61140f654ec3685e4b8d0657f197da66766f37b2784cb6bdc9096096e18544abf45f9331a50a3a28164cdab42"
+    },
+    "role": "profesional",
+    "name": "María Pérez Sanz",
+    "registrationNumber": "AG729",
+    "address": "C/ Psicólogo, 1",
+    "postalCode": 50004,
+    "province": "Zaragoza",
+    "phone": 653895651,
+    "cases": "65fd4269df529f4fa178b4f7"
+  },
+  {
+    "_id": "65fc009ab0d856214efde1b8",
+    "email": "profesional2@gmail.com",
+    "password": {
+      "salt": "6391b3f23691149bd24da12f2d97554169d14f4a31aeb5ea067c3e3b76df7d9e",
+      "hash": "2c8c07156f6dfc4bcf59fee153305206b447f20d3295117227e1c38a8b76f4ca559c69b5784e11ac2442d70209c41c48895ec8d84bfc3b1a361228fa8bea1b07"
+    },
+    "role": "profesional",
+    "name": "Antonio Sánchez Mayo",
+    "registrationNumber": "UP254",
+    "address": "C/ Psicólogo, 1",
+    "postalCode": 50004,
+    "province": "Huesca",
+    "phone": 617296612,
+    "cases": []
+  },
+  {
+    "_id": "65fc17c9d23ab496bf064910",
+    "email": "colegio3@gmail.com",
+    "password": {
+      "salt": "b32e3fa9434df89313e9d50922c2c59494877ac743a4caf759c0f3cecb73998a",
+      "hash": "648aef115d5719648b87eeddfc198f579f86dccd9fde7678ab7d100372d867e89fdb91be32db91d820db9cd7b058bab3212583568e9cdd8fa3985450b4167f91"
+    },
+    "role": "colegio",
+    "name": "Jerónimo Blancas",
+    "address": "C/ Colegio, 3",
+    "postalCode": 50012,
+    "province": "Zaragoza",
+    "contactPerson": "María",
+    "phone": 692643729,
+    "phoneSecondary": 632923515,
+    "professionals": [
+      "65fc0046b0d856214efde1b5"
+    ],
+    "cases": []
+  }
+]

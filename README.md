@@ -28,44 +28,40 @@ npm run dev
 
 # API Routes
 
+## Auth routes
+| URL path                            | HTTP Method   | Response           | Action                  | Protected |
+| :----------------------------------:| :-----------: | :----------------: | :---------------------: | :-------: |
+| /api/auth/signup                    | POST          | {message, newUser} | Create a new user       |    ❌     |
+| /api/auth/login                     | POST          | {token}            | Log user in             |    ❌     |
+| /api/auth/getProfile                | POST          | {loggedUser}       | Get Logged User         |    ✅     |
+
 
 ### Cases
-| URL path                   | HTTP Method     | Response              | Action                  |
-| :------------------------: | :-------------: | :-------------------: | :---------------------: | 
-| /api/cases/getOne/:case_id | GET             | {case}                |  Get one user case      |
-| /api/cases/create          | POST            | {createdCase}         |  Create a new case      |
-| /api/cases/edit/:case_id   | PUT             | {editedCase}          |  Edit a case            |
-| /api/cases/changeCaseStatus/:case_id | PUT   | {editedCase}          |  Edit case state        |
+| URL path                            | Method  | Response               | Action                  | Protected |
+| :----------------------------------:| :-----: | :--------------------: | :---------------------: | :-------: |
+| /api/cases/getAll                   | GET     | [cases]                |  Get all cases          |    ✅     |
+| /api/cases/getOne/:case_id          | GET     | {case}                 |  Get one case           |    ✅     |
+| /api/cases/create                   | POST    | {message, newCase}     |  Create a new case      |    ✅     |
+| /api/cases/changeStatus/:case_id    | PUT     | {message, updatedCase} |  Edit case status       |    ✅     |
+
   
 
 ### Users  
-| URL path                   | HTTP Method     | Response              | Action                  |
-| :------------------------: | :-------------: | :-------------------: | :---------------------: |
-| /api/users                 | GET             | [users]               |  Get all users          |
-| /api/users/getOneUser      | GET             | {user}                |  Get one user           |
-| /api/users/getAllMyCases   | GET             | {cases}               |  Get all user cases     |
-| /api/users/editUser        | PUT             | {user}                |  Edit a user            |
-| /api/users/remove          | DELETE          | {message}             |  Remove a user          |
-
-
-## Auth routes
-| URL path                   | HTTP Method     | Response              | Action                  |
-| :-------------------------:| :-------------: | :--------------------:| :----------------------:|
-| /api/auth/signup           | POST            | {createdUser}         | Create a new user       |
-| /api/auth/login            | POST            | {token}               | Log user in             |
-| /api/auth/verify           | POST            | {loggedUser}          | Get Logged User         |
-
+| URL path                            | Method  | Response               | Action                  | Protected |
+| :----------------------------------:| :-----: | :--------------------: | :---------------------: | :-------: |
+| /api/users/edit                     | PUT     | {message, updatedUser} |  Edit a user            |    ✅     |
+| /api/users/remove                   | DELETE  | {message}              |  Remove a user          |    ✅      |
 
   
-<!-- ### Schools  
-| URL path                   | HTTP Method     | Response              | Action                  |
-| :------------------------: | :-------------: | :-------------------: | :---------------------: | 
-| /api/schools               | GET             | [schools]             |  Get all schools        |
-| /api/schools/getOne/:school_id    | GET             | {school}              |  Get one school         |
+### Schools  
+| URL path                                               | Method  | Response          | Action                                   | Protected |
+| :-----------------------------------------------------:| :-----: | :---------------: | :--------------------------------------: | :-------: |
+| /api/schools/getAll                                    | GET     | [schools]         |  Get all schools                         |    ❌     |
+| /api/schools/getOnePrivate/:school_id                  | GET     | {school}          |  Get one school with private info        |    ✅     |
   
 
 ### Professionals  
-| URL path                   | HTTP Method     | Response              | Action                  |
-| :------------------------: | :-------------: | :-------------------: | :---------------------: |
-| /api/professionals         | GET             | [professionals]       |  Get all professionals  |
-| /api/professionals/getOne/:id| GET           | {professional}        |  Get one professional   | -->
+| URL path                                               | Method  | Response          | Action                                   | Protected |
+| :-----------------------------------------------------:| :-----: | :---------------: | :--------------------------------------: | :-------: |
+| /api/professionals/getAll                              | GET     | [professionals]   |  Get all professionals                   |    ❌     |
+| /api/professionals/getOnePrivate/:professional_id      | GET     | {professional}    |  Get one professional with private info  |    ✅     |

@@ -12,7 +12,7 @@ const userSchema = new Schema(
                 /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/,
                 'Este email no es válido.',
             ],
-            required: [true, 'Indícanos un email del colegio.'],
+            required: [true, 'Indícanos un email de contacto.'],
         },
         password: {
             salt: {
@@ -26,31 +26,28 @@ const userSchema = new Schema(
         },
         role: {
             type: String,
-            enum: ['colegio', 'psicologo'],
+            enum: ['colegio', 'profesional'],
             required: true
         },
         name: {
             type: String,
             minLength: 3,
-            required: [true, 'Indícanos el nombre del colegio.'],
+            required: [true, 'Indícanos el nombre.'],
         },
         registrationNumber: {
             // Solo para los profesionales
             type: String,
-            // unique: true,
-            minLength: 5,
-            // required: [true, 'Indícanos tu número de colegiado.'],
         },
         address: {
             type: String,
             minLength: 10,
-            // required: [true, 'Indícanos la dirección del colegio.'],
+            required: [true, 'Indícanos la dirección.'],
         },
         postalCode: {
             type: Number,
             minLength: 5,
             maxLength: 5,
-            // required: [true, 'Indícanos el código postal.'],
+            required: [true, 'Indícanos el código postal.'],
         },
         province: {
             type: String,
@@ -59,28 +56,30 @@ const userSchema = new Schema(
             'Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra',
             'Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona',
             'Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza'],
-            // required: [true, 'Indícanos la provincia.'],
+            required: [true, 'Indícanos la provincia.'],
         },
         contactPerson: {
             // Solo para los colegios
-            type: String,
-            minLength: 3
-            // required: [true, 'Indícanos tu nombre.'],
+            type: String
         },
         phone: {
             type: Number,
-            // match: /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/,
             minLength: 9,
             maxLength: 9,
-            // required: [true, 'Indícanos el teléfono del colegio.'],
+            required: [true, 'Indícanos tu teléfono.'],
         },
         phoneSecondary: {
-            // Un segundo teléfono de contacto solo para los colegios
-            type: Number,
-            // match: /^(\()?\d{3}(\))?(-|\s)?\d{3}(-|\s)\d{4}$/,
-            minLength: 9,
-            maxLength: 9,
+            // Solo para los colegios
+            type: Number
         },
+        professionals: {
+            type: Schema.Types.ObjectId, 
+            ref: 'User'
+        },
+        schools: [{
+            type: Schema.Types.ObjectId, 
+            ref: 'User'
+        }],
         cases: [{
             type: Schema.Types.ObjectId, 
             ref: 'Cases'

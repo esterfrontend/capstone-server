@@ -2,9 +2,9 @@ const { Schema, model } = require('mongoose');
 
 const caseSchema = new Schema(
     {
-        state: {
+        status: {
             type: String,
-            enum: ['Abierta', 'En curso', 'En pausa', 'Cerrada'],
+            enum: ['abierto', 'en-curso', 'pausa', 'cerrado'],
             required: [true, 'Falta el estado'],
         },
         school: { 
@@ -12,14 +12,9 @@ const caseSchema = new Schema(
             ref: 'School',
             required: [true, 'Necesitamos que indiques el colegio al que va la víctima.'],
         },
-        province: {
-            type: String,
-            enum: ['Álava','Albacete','Alicante','Almería','Asturias','Ávila','Badajoz','Barcelona','Burgos','Cáceres',
-            'Cádiz','Cantabria','Castellón','Ciudad Real','Córdoba','La Coruña','Cuenca','Gerona','Granada','Guadalajara',
-            'Guipúzcoa','Huelva','Huesca','Islas Baleares','Jaén','León','Lérida','Lugo','Madrid','Málaga','Murcia','Navarra',
-            'Orense','Palencia','Las Palmas','Pontevedra','La Rioja','Salamanca','Segovia','Sevilla','Soria','Tarragona',
-            'Santa Cruz de Tenerife','Teruel','Toledo','Valencia','Valladolid','Vizcaya','Zamora','Zaragoza'],
-            required: [true, 'Indícanos la provincia.'],
+        professional: { 
+            type: Schema.Types.ObjectId, 
+            ref: 'Professional'
         },
         victim: {
             type: String,
@@ -42,9 +37,9 @@ const caseSchema = new Schema(
             type: String,
             minLength: 3,
         },
-        attached: [
-            {}
-        ],
+        // attached: [
+        //     {}
+        // ],
         informant: {
             anonymous: {
                 type: Boolean,
@@ -60,28 +55,21 @@ const caseSchema = new Schema(
                 type: String,
             },
         },
-        professional: { 
-            type: Schema.Types.ObjectId, 
-            ref: 'Professional'
-        },
-        comments: [
-            {
-                _id: false,
-                comment: {
-                    type: String,
-                    minLength: 3,
-                    required: true
-                },
-                date: { 
-                    type: Date, 
-                    required: true 
-                },
-                author: {
-                    type: String,
-                    required: true
-                }
-            }
-        ]
+        // comments: [
+        //     {
+        //         _id: false,
+        //         comment: {
+        //             type: String,
+        //             minLength: 3,
+        //         },
+        //         date: { 
+        //             type: Date, 
+        //         },
+        //         author: {
+        //             type: String,
+        //         }
+        //     }
+        // ]
     },
     {
         timestamps: true,

@@ -4,42 +4,70 @@ const jwt = require('jsonwebtoken');
 
 const signup = async (req, res, next) => {
     try {
-        let user = await User.findOne({ email: req.body.email });
+        const {
+            email,
+            password,
+            role,
+            name,
+            registrationNumber,
+            address,
+            postalCode,
+            province,
+            contactPerson,
+            phone,
+            phoneSecondary,
+            professional_id
+        } = req.body
+
+        let user = await User.findOne({ email });
         if (user) {
             res.status(400).json({ error: true, contenido: 'Ese email ya está registrado' });
         }
-        const passwordCrypt = createPass(req.body.password);
+        
+        const passwordCrypt = createPass(password);
+
+        if(role === 'colegio') {
+            const {role: professionalRole} = await User.findById(professional_id).select('role')
+            
+            if(professionalRole !== 'profesional') {
+                return res.status(400).json({ message: 'Invalid professional id.' });
+            }
+        }
+        
         const createdUser = await User.create({
-            email: req.body.email,
+            email,
             password: passwordCrypt,
-            role: req.body.role,
-            name: req.body.name,
-            contactPerson: req.body.contactPerson,
-            registrationNumber: req.body.registrationNumber,
-            address: req.body.address,
-            postalCode: req.body.postalCode,
-            province: req.body.province,
-            phone: req.body.phone,
-            phoneSecondary: req.body.phoneSecondary
+            role,
+            name,
+            contactPerson,
+            registrationNumber,
+            address,
+            postalCode,
+            province,
+            phone,
+            phoneSecondary,
+            professional: [professional_id],
+            cases: []
         });
-        res.json({ message: 'Usuario creado', contendio: createdUser });
+
+        res.json({ message: 'Usuario creado', newUser: createdUser });
     } catch (error) {
         next(error)
     }
 };
 
-const login = async (req, res) => {
+const login = (req, res) => {
     res.json({
         token: jwt.sign({ user: req.user._id, role: req.user.role }, process.env.PASSPORT_SECRET, { expiresIn: '1d' }),
     });
 };
 
-const verify = async (req, res) => {
+const getProfile = (req, res) => {
     res.json(req.user);
 };
 
 module.exports = {
     signup,
     login,
-    verify
+    getProfile
 }
