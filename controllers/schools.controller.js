@@ -24,10 +24,10 @@ const getOneSchoolPrivate = async (req, res, next) => {
         }
 
         const school = await User
-            .findOne({_id: school_id, role: 'school'})
+            .findOne({_id: school_id, role: 'colegio'})
             .select('-password -role -createdAt -updatedAt')
 
-        if(!school.professionals.includes(user_id)) {
+        if(!school.professional === user_id) {
             return res.json({message: "No puedes ver este contenido."})
         }
     

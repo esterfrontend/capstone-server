@@ -72,7 +72,7 @@ const userSchema = new Schema(
             // Solo para los colegios
             type: Number
         },
-        professionals: {
+        professional: {
             type: Schema.Types.ObjectId, 
             ref: 'User'
         },
@@ -82,7 +82,7 @@ const userSchema = new Schema(
         }],
         cases: [{
             type: Schema.Types.ObjectId, 
-            ref: 'Cases'
+            ref: 'Case'
         }]
     },
     {

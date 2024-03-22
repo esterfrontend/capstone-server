@@ -9,12 +9,12 @@ const caseSchema = new Schema(
         },
         school: { 
             type: Schema.Types.ObjectId, 
-            ref: 'School',
+            ref: 'User',
             required: [true, 'Necesitamos que indiques el colegio al que va la víctima.'],
         },
         professional: { 
             type: Schema.Types.ObjectId, 
-            ref: 'Professional'
+            ref: 'User'
         },
         victim: {
             type: String,

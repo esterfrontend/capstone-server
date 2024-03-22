@@ -27,6 +27,12 @@ const getOneProfessionalPrivate = async (req, res, next) => {
             .findOne({_id: professional_id, role: 'profesional'})
             .select('-password -role -createdAt -updatedAt')
         
+        console.log(professional)
+
+        if(!professional) {
+            return res.json({message: "Invalid professional id."})
+        }
+
         if(!professional.schools.includes(user_id)) {
             return res.json({message: "No puedes ver este contenido."})
         }

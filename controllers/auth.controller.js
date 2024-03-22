@@ -26,8 +26,6 @@ const signup = async (req, res, next) => {
         
         const passwordCrypt = createPass(password);
 
-        console.log(professional_id)
-
         if(role === 'colegio') {
             const professional = await User.find({_id: professional_id, role: 'profesional'}).lean()
             if(!professional) {
@@ -47,7 +45,7 @@ const signup = async (req, res, next) => {
             province,
             phone,
             phoneSecondary,
-            professionals: [professional_id],
+            professional: professional_id,
             cases: []
         });
 

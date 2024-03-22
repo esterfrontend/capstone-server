@@ -1,13 +1,12 @@
 const { Types } = require('mongoose');
 const User = require('../models/user.model');
 const Case = require('../models/case.model');
-const School = require('../models/user.model');
 
 const getAllCases = async (req, res, next) => {
     try {
         const { _id: user_id } = req.user
 
-        const user = await User.findById(user_id)
+        const user = await User.findById(user_id).populate('cases')
         
         if(!user.cases) {
             return res.status(404).json({message: "User not found."})
@@ -49,7 +48,7 @@ const getOneCase = async (req, res, next) => {
 const createOneCase = async (req, res, next) => {
     try {
         const {
-            school,
+            school_id,
             victim,
             place,
             how,
@@ -61,18 +60,17 @@ const createOneCase = async (req, res, next) => {
             informantContact
         } = req.body
 
-        if (!school || !victim) {
+        if (!school_id || !victim) {
             return res.status(400).json({ message: 'School field is required' });
         }
 
-        const {professionals} = await School.findById(school).select('professionals')
-
-        let professional = undefined
-        if(professionals.length > 1) {
-            professional = Math.floor(Math.random() * professionals.length)
-        } else {
-            professional = professionals
+        const school = await User.findOne({_id: school_id, role: 'colegio'}).select('professional')
+        
+        if(!school) {
+            return res.status(500).json({ message: 'Invalid school ID' });
         }
+        
+        const professional = school.professional
 
         let dataInformant = {
             anonymous: anonymous
@@ -91,7 +89,7 @@ const createOneCase = async (req, res, next) => {
 
         const newCase = await Case.create({
             status: 'abierto',
-            school,
+            school: school_id,
             professional,
             victim,
             place,
