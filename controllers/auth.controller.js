@@ -26,10 +26,11 @@ const signup = async (req, res, next) => {
         
         const passwordCrypt = createPass(password);
 
+        console.log(professional_id)
+
         if(role === 'colegio') {
-            const {role: professionalRole} = await User.findById(professional_id).select('role')
-            
-            if(professionalRole !== 'profesional') {
+            const professional = await User.find({_id: professional_id, role: 'profesional'}).lean()
+            if(!professional) {
                 return res.status(400).json({ message: 'Invalid professional id.' });
             }
         }
@@ -46,9 +47,17 @@ const signup = async (req, res, next) => {
             province,
             phone,
             phoneSecondary,
-            professional: [professional_id],
+            professionals: [professional_id],
             cases: []
         });
+
+        if(role === 'colegio') {
+            await User.findByIdAndUpdate(
+                professional_id,
+                { $addToSet: { schools: createdUser._id } },
+                { new: true }
+            )
+        }
 
         res.json({ message: 'Usuario creado', newUser: createdUser });
     } catch (error) {

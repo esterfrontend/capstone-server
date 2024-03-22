@@ -19,28 +19,19 @@ const getOneProfessionalPrivate = async (req, res, next) => {
         const { _id: user_id } = req.user
         const { professional_id } = req.params
 
-        if (!Types.ObjectId.isValid(user_id)) {
+        if (!Types.ObjectId.isValid(professional_id)) {
             return res.status(400).json({ message: 'Invalid school id.' });
         }
 
-        const {professionals} = await User
-            .findByID(user_id)
+        const professional = await User
+            .findOne({_id: professional_id, role: 'profesional'})
             .select('-password -role -createdAt -updatedAt')
         
-       // FALTA
-        // No funciona esta comprobación
-        // 
-        // console.log(professionals)
-        // console.log(user_id)
-        // if(professionals !== user_id) {
-        //     return res.json({message: "No puedes ver este contenido."})
-        // }
-
-        if(!school || school.length === 0) {
-            return res.status(404).json({message: "Access forbidden"})
+        if(!professional.schools.includes(user_id)) {
+            return res.json({message: "No puedes ver este contenido."})
         }
 
-        res.status(200).json(school);
+        res.status(200).json(professional);
     } catch (err) {
         next(err)
     }

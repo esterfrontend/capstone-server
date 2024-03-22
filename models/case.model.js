@@ -35,7 +35,6 @@ const caseSchema = new Schema(
         },
         moreInformation: {
             type: String,
-            minLength: 3,
         },
         // attached: [
         //     {}
