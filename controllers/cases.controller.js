@@ -26,18 +26,19 @@ const getOneCase = async (req, res, next) => {
         if (!Types.ObjectId.isValid(case_id)) {
             return res.status(400).json({ message: 'Invalid case id.' });
         }
+        
+        const user = await User.findOne({ $and: [{ _id: user_id, cases: { $in: [case_id] } }]})
+            .select('cases')
+            .populate('cases')
 
-        const {cases} = await User.findById(user_id).select('cases')
-
-        if(!cases.includes(case_id)) {
+        if(!user) {
             return res.status(500).json({message: "No permissions."})
         }
 
-        const occurrence = await Case.findById(case_id)
-
-        if(!occurrence) {
-            return res.status(404).json({message: "Case not found."})
-        }
+        
+        const occurrence = user.cases.find((item) => {
+            return item._id.toString() === case_id
+        })
 
         res.status(200).json(occurrence);
     } catch (err) {
@@ -99,15 +100,9 @@ const createOneCase = async (req, res, next) => {
             informant: dataInformant
         });
 
-        await User.findByIdAndUpdate(
-            school,
+        await User.updateMany(
+            { _id: { $in: [professional, school] } },
             { $addToSet: { cases: newCase } },
-            { new: true }
-        )
-        await User.findByIdAndUpdate(
-            professional,
-            { $addToSet: { cases: newCase } },
-            { new: true }
         )
 
         res.status(200).json({message: 'New case created', case: newCase});
