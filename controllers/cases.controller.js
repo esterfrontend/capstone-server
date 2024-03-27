@@ -29,12 +29,17 @@ const getOneCase = async (req, res, next) => {
         
         const user = await User.findOne({ $and: [{ _id: user_id, cases: { $in: [case_id] } }]})
             .select('cases')
-            .populate('cases')
+            .populate({
+                path: 'cases',
+                populate: [
+                    { path: 'school' },
+                    { path: 'professional'}
+                ]
+           });
 
         if(!user) {
             return res.status(500).json({message: "No permissions."})
         }
-
         
         const occurrence = user.cases.find((item) => {
             return item._id.toString() === case_id
