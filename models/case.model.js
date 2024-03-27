@@ -22,8 +22,15 @@ const caseSchema = new Schema(
             required: [true, 'Necesitamos que nos indiques qué persona está sufriendo acoso para poder ayudarla.'],
         },
         place: {
-            type: String,
-            minLength: 3,
+            atSchool: {
+                type: Boolean
+            },
+            outside: {
+                type: Boolean
+            },
+            socialMedia: {
+                type: Boolean
+            }
         },
         how: {
             type: String,
